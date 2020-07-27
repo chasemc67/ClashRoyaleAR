@@ -5,8 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject activeCharacterPrefab;
-    public Transform rackCharacterTransform;
-    public Transform gameboard;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +17,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public void spawnCharacter() {
-        Instantiate(activeCharacterPrefab, rackCharacterTransform.position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), gameboard);
+    public void SpawnCharacter(Vector3 position) {
+        Instantiate(activeCharacterPrefab, position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up));
     }
 }
