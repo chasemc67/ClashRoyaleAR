@@ -18,9 +18,4 @@ public class HandDebugMenuManager : MonoBehaviour
     {
         
     }
-
-    public void TouchGameBoard() {
-        Gameboard.GetComponent<NearInteractionGrabbable>().enabled =  !Gameboard.GetComponent<NearInteractionGrabbable>().enabled;
-        Gameboard.GetComponent<ObjectManipulator>().enabled = !Gameboard.GetComponent<ObjectManipulator>().enabled;
-    }
 }
