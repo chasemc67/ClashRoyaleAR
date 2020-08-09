@@ -12,20 +12,20 @@ public class ToggleComponents : MonoBehaviour
     // Start is called before the first frame update
     
     public void DisableComponents() {
-        GetComponent<NearInteractionGrabbable>().enabled = false;
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<ObjectManipulator>().enabled = false;
-        
-        for (int i = 0; i < monoBehaviorComponents.Count; i++) {
-            monoBehaviorComponents[i].enabled = false;
-        }
+        // GetComponent<NearInteractionGrabbable>().enabled = false;
+        // GetComponent<BoxCollider>().enabled = false;
+        // GetComponent<ObjectManipulator>().enabled = false;
 
-        for (int i = 0; i < colliderObjects.Count; i++) {
-            colliderObjects[i].enabled = false;
-        }
+        // for (int i = 0; i < monoBehaviorComponents.Count; i++) {
+        //     monoBehaviorComponents[i].enabled = false;
+        // }
 
-        GetComponent<NearInteractionGrabbable>().enabled = false;
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<ObjectManipulator>().enabled = false;
+        // for (int i = 0; i < colliderObjects.Count; i++) {
+        //     colliderObjects[i].enabled = false;
+        // }
+
+        GetComponent<NearInteractionGrabbable>().enabled = !GetComponent<NearInteractionGrabbable>().enabled;
+        GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
+        GetComponent<ObjectManipulator>().enabled = !GetComponent<ObjectManipulator>().enabled;
     }
 }

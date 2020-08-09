@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public Transform Wall1;
-    public Transform PlayerTower;
+    public Transform destination;
 
     private NavMeshAgent agent;
     // Start is called before the first frame update
@@ -14,15 +13,16 @@ public class EnemyBehavior : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         MoveToNextPatrolLocation();
+        
     }
 
     void MoveToNextPatrolLocation() {
-        agent.destination = Wall1.position;
+        agent.destination = destination.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 }

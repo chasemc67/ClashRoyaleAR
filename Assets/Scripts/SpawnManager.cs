@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
-    public GameObject activeCharacterPrefab;
+    public GameObject ActiveCharacterPrefab;
+    public GameObject DropCharacterPrefab;
+    public GameObject spawnParent;
+    public Transform enemySpawnPoint;
+    public Transform playerSpawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +21,15 @@ public class SpawnManager : Singleton<SpawnManager>
         
     }
 
+    public void SpawnDropCharacter(Vector3 position) {
+        var DropPlayer = Instantiate(DropCharacterPrefab, position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), spawnParent.transform);
+        DropPlayer.GetComponent<DropCharacterController>().hitGround += SpawnCharacter;
+    }
+
     public void SpawnCharacter(Vector3 position) {
-        Instantiate(activeCharacterPrefab, position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up));
+        var Player = Instantiate(ActiveCharacterPrefab, position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), spawnParent.transform);
+        Player.GetComponent<EnemyBehavior>().destination = enemySpawnPoint;
+        var Enemy = Instantiate(ActiveCharacterPrefab, enemySpawnPoint.transform.position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), spawnParent.transform);
+        Enemy.GetComponent<EnemyBehavior>().destination = playerSpawnPoint;
     }
 }

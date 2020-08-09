@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RackCharacterManipulationHandler : MonoBehaviour
-{   
+{
+    Vector3 RackPosition;   
     // Start is called before the first frame update
     void Awake()
     {
+        RackPosition = transform.position;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +17,8 @@ public class RackCharacterManipulationHandler : MonoBehaviour
     }
 
     public void ManipulationEnded() {
-        SpawnManager.Instance.SpawnCharacter(gameObject.transform.position);
+        Vector3 pos = gameObject.transform.position;
+        transform.position = RackPosition;
+        SpawnManager.Instance.SpawnDropCharacter(pos);
     }
 }
