@@ -28,8 +28,8 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void SpawnCharacter(Vector3 position) {
         var Player = Instantiate(ActiveCharacterPrefab, position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), spawnParent.transform);
-        Player.GetComponent<EnemyBehavior>().destination = enemySpawnPoint.transform;
+        Player.GetComponent<ActiveCharacterBehavior>().destination = enemySpawnPoint.transform;
         var Enemy = Instantiate(ActiveCharacterPrefab, enemySpawnPoint.transform.position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), spawnParent.transform);
-        Enemy.GetComponent<EnemyBehavior>().destination = playerSpawnPoint.transform;
+        Enemy.GetComponent<ActiveCharacterBehavior>().destination = playerSpawnPoint.transform;
     }
 }
