@@ -4,11 +4,15 @@ using UnityEngine;
 
 using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UI;
+using UnityEngine.AI;
 
 public class ToggleComponents : MonoBehaviour
 {
     public List<MonoBehaviour> monoBehaviorComponents;
     public List<Collider> colliderObjects;
+
+    public NavMeshSurface navMeshSurface;
+
     // Start is called before the first frame update
     
     public void DisableComponents() {
@@ -27,5 +31,6 @@ public class ToggleComponents : MonoBehaviour
         GetComponent<NearInteractionGrabbable>().enabled = !GetComponent<NearInteractionGrabbable>().enabled;
         GetComponent<BoxCollider>().enabled = !GetComponent<BoxCollider>().enabled;
         GetComponent<ObjectManipulator>().enabled = !GetComponent<ObjectManipulator>().enabled;
+        navMeshSurface.BuildNavMesh();
     }
 }

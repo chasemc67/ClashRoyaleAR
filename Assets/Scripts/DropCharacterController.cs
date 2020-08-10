@@ -26,8 +26,12 @@ public class DropCharacterController : MonoBehaviour
         // var Player = Instantiate(ActiveCharacterPrefab, transform.position, Quaternion.LookRotation(gameObject.transform.forward, gameObject.transform.up), SpawnParent.transform);
         // Player.GetComponent<EnemyBehavior>().destination = EnemySpawnPoint;
         // Destroy(gameObject);
-        hitGround(transform.position);
-        Destroy(gameObject); 
+        if (other.gameObject.tag == "Ground") {
+            GetComponent<CapsuleCollider>().enabled = false;
+            hitGround(transform.position);
+            Destroy(gameObject);
+        }
+         
     }
 
 }
